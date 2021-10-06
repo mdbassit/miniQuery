@@ -1,4 +1,9 @@
-/** Simple jQuery-like DOM query class **/
+/*!
+ * Tiny jQuery-like DOM query utility.
+ * Copyright (c) 2021 Momo Bassit.
+ * Licensed under the MIT License (MIT)
+ * https://github.com/mdbassit/miniQuery
+ */
 window.miniQuery = (function (document, undefined) {
 
   /**  Constructor **/
@@ -6,7 +11,7 @@ window.miniQuery = (function (document, undefined) {
     return new QuerySelector(selector, context);
   }
 
-  /** Find an element or elements that match the selector **/
+  /** Find one or more elements that match the selector **/
   function QuerySelector(selector, context) {
     let i, m, match, result;
 
@@ -108,6 +113,7 @@ window.miniQuery = (function (document, undefined) {
     }
   }
 
+  /** Convert kebab-case to camelCase **/
   function camelCase (value) {
       return value.replace(/-([a-z])/g, (all, letter) => letter.toUpperCase());
   }
