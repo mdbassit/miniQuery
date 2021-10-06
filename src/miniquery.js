@@ -35,9 +35,7 @@ window.miniQuery = (function (document, undefined) {
           result = context.getElementById(m);
 
           if (result) {
-            this[0] = result;
-            this.el = this[0];
-            this.length = 1;
+            return wrap.call(this, [result]);
           }
 
           return this;
@@ -60,17 +58,14 @@ window.miniQuery = (function (document, undefined) {
 
     // DOMElement selector    
     }  else if (selector && selector.nodeType) {
-      this[0] = selector;
-      this.el = this[0];
-      this.length = 1;
-      return this;
+      return wrap.call(this, [selector]);
 
     // Array of DOMElements
     } else if (Array.isArray(selector)) {
       return wrap.call(this, selector);
     }
 
-    return wrap.call(this, [selector]);
+    return this;
   }
 
   /** Wrap elements in the MiniQuery object **/
