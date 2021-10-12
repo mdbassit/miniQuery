@@ -190,6 +190,9 @@ window.miniQuery = (function (document, undefined) {
       return this;
     },
 
+    /** Shortcut to createFragment **/
+    create: createFragment,
+
     /** Get the value of a style property of the first element or set its value for each element in the set **/
     css: function (key, value) {
       key = camelCase(key);
@@ -378,6 +381,17 @@ window.miniQuery = (function (document, undefined) {
       });
     }
   };
+
+  /** Expose a shortcut to createFragment **/
+  MiniQuery.create = (html, returnEl) => {
+    const result = MiniQuery().create(html);
+
+    if (returnEl) {
+      return result.el;  
+    } else {
+      return result;
+    }
+  }
 
   return MiniQuery;
 
