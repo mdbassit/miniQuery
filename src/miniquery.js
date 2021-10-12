@@ -4,7 +4,12 @@
  * Licensed under the MIT License (MIT)
  * https://github.com/mdbassit/miniQuery
  */
-window.miniQuery = (function (document, undefined) {
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = global || self, global.$ = factory());
+})(this, function (undefined) {
+  'use strict';
 
   /**  Constructor **/
   function MiniQuery(selector, context) {
@@ -395,4 +400,4 @@ window.miniQuery = (function (document, undefined) {
 
   return MiniQuery;
 
-})(document);
+});
