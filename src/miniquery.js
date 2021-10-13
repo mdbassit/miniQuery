@@ -120,7 +120,18 @@
 
   /** Convert kebab-case to camelCase **/
   function camelCase (value) {
-      return value.replace(/-([a-z])/g, (all, letter) => letter.toUpperCase());
+    return value.replace(/-([a-z])/g, (all, letter) => letter.toUpperCase());
+  }
+
+  /** Call a function once the DOM is ready **/
+  function DOMReady(fn) {
+    if (document.readyState !== 'loading') {
+      fn();
+    } else {
+      document.addEventListener('DOMContentLoaded', fn);
+    }
+
+    return this;
   }
 
   // Define the prototype
@@ -337,6 +348,9 @@
 
       return this;
     },
+
+    /** Shortcut to DOMReady **/
+    ready: DOMReady,
 
     /** Replace the HTML content for each element in the set **/
     replaceWith: function (content) {
