@@ -76,7 +76,7 @@
 
     // Function selector
     // Shortcut for $(document).ready()
-    } else if (typeof selector === 'function') {
+    } else if (isFunction(selector)) {
       return DOMReady(selector);
     }
 
@@ -127,6 +127,13 @@
   function camelCase (value) {
     return value.replace(/-([a-z])/g, (all, letter) => letter.toUpperCase());
   }
+
+  /** Check if an object is (really) a function **/
+  function isFunction(object) {
+    return typeof object === 'function' && 
+           typeof object.nodeType !== 'number' &&
+           typeof object.item !== 'function';
+  };
 
   /** Call a function once the DOM is ready **/
   function DOMReady(fn) {
@@ -281,7 +288,7 @@
       let thisArg = this;
 
       // Normal event (no delegation)
-      if (typeof selector === 'function') {
+      if (isFunction(selector)) {
         useCapture = func;
         func = selector;
         selector = null;
