@@ -73,6 +73,11 @@
     // Array of DOMElements
     } else if (Array.isArray(selector)) {
       return wrap.call(this, selector);
+
+    // Function selector
+    // Shortcut for $(document).ready()
+    } else if (typeof selector === 'function') {
+      return DOMReady(selector);
     }
 
     return this;
