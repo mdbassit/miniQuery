@@ -11,6 +11,8 @@
 })(this, function (undefined) {
   'use strict';
 
+  const matches = Element.prototype.matches || Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+
   /**  Constructor **/
   function MiniQuery(selector, context) {
     return new QuerySelector(selector, context);
