@@ -137,6 +137,15 @@
            typeof object.item !== 'function';
   };
 
+  /** Set an attribute of an element **/
+  function setAttribute(element, key, value) {
+      if (value === false) {
+          element.removeAttribute(key);
+      } else {
+          element.setAttribute(key, value);
+      }
+  }
+
   /** Call a function once the DOM is ready **/
   function DOMReady(fn) {
     if (document.readyState !== 'loading') {
@@ -210,10 +219,10 @@
       this.each(element => {
         if (typeof key === 'object') {
           for (const item in key) {
-            element.setAttribute(item, key[item]);
+            setAttribute(element, item, key[item]);
           }
         } else {
-          element.setAttribute(key, value);
+          setAttribute(element, key, value);
         }
       });
 
