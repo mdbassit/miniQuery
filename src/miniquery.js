@@ -181,6 +181,28 @@
       return this;
     },
 
+    /** Return the ancestor that match the selector for each element in the set **/
+    ancestor: function (selector) {
+        const result = [];
+
+        if (!selector) {
+            return this.parent();
+        }
+
+        this.each(function (element) {
+            while ((element = element.parentNode) && element.nodeType !== 9 ) {
+                if (element.nodeType === 1) {
+                    if (matches.call(element, selector)) {
+                        result.push(element);
+                        break;
+                    }
+                }
+            }
+        });
+
+        return wrap.call(this, result);
+    },
+
     /** Append one or more children to each element in the set **/
     append: function (node) {
       if (!node) {
