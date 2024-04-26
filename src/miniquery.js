@@ -43,7 +43,7 @@
       } else if ((match = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/.exec(selector))) {
 
         // ID selector
-        if ((m = match[1])) {
+        if (context === document && (m = match[1])) {
           result = context.getElementById(m);
 
           if (result) {
