@@ -200,7 +200,7 @@
             }
         });
 
-        return wrap.call(this, result);
+        return MiniQuery(result);
     },
 
     /** Append one or more children to each element in the set **/
@@ -356,7 +356,7 @@
         }
       });
 
-      return wrap.call(this, result);
+      return MiniQuery(result);
     },
 
     /** Get a property from the first element or set a property for each element in the set **/
